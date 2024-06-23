@@ -1,7 +1,7 @@
 services:
 
   dev:
-    image: yoanbernabeu/symfony-dev-container:latest
+    image: labinc/symfony-dev-container:latest
     command: sleep infinity
     volumes:
       - ../.:/workspace
@@ -10,7 +10,7 @@ services:
     environment:
       DATABASE_URL: "postgresql://${POSTGRES_USER:-app}:${POSTGRES_PASSWORD:-!ChangeMe!}@database:5432/${POSTGRES_DB:-app}"
       MAILER_DSN: "smtp://mailer:1025"
-      
+
   database:
     image: postgres:${POSTGRES_VERSION:-16}-alpine
     environment:
@@ -19,7 +19,15 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-!ChangeMe!}
       POSTGRES_USER: ${POSTGRES_USER:-app}
     healthcheck:
-      test: ["CMD", "pg_isready", "-d", "${POSTGRES_DB:-app}", "-U", "${POSTGRES_USER:-app}"]
+      test:
+        [
+          "CMD",
+          "pg_isready",
+          "-d",
+          "${POSTGRES_DB:-app}",
+          "-U",
+          "${POSTGRES_USER:-app}"
+        ]
       timeout: 5s
       retries: 5
       start_period: 60s
