@@ -45,7 +45,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 RUN curl "https://castor.jolicode.com/install" | bash
 RUN mv /root/.local/bin/castor /usr/local/bin/castor
 RUN chmod +x /usr/local/bin/castor
-RUN castor completion | sudo tee /etc/bash_completion.d/castor
+RUN castor completion bash | sudo tee /etc/bash_completion.d/castor
 
 # Symfony CLI
 RUN wget https://get.symfony.com/cli/installer -O - | bash \
