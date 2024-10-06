@@ -10,7 +10,15 @@
                 "EditorConfig.EditorConfig",
                 "bmewburn.vscode-intelephense-client",
                 "xdebug.php-debug"
-            ]
+            ],
+            "settings": {
+                "terminal.integrated.defaultProfile.linux": "bash",
+                "terminal.integrated.profiles.linux": {
+                    "bash": {
+                        "path": "/bin/bash"
+                    }
+                }
+            }
         }
     },
     "forwardPorts": [
