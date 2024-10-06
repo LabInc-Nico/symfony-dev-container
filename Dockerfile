@@ -40,6 +40,11 @@ RUN install-php-extensions \
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
+# Castor JoliCode 
+# https://castor.jolicode.com/getting-started/installation/#installation
+RUN curl "https://castor.jolicode.com/install" | bash
+RUN castor completion | sudo tee /etc/bash_completion.d/castor
+
 # Symfony CLI
 RUN wget https://get.symfony.com/cli/installer -O - | bash \
     && mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
