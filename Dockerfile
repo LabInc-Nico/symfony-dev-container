@@ -43,7 +43,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 # Castor JoliCode 
 # https://castor.jolicode.com/getting-started/installation/#installation
 RUN curl "https://castor.jolicode.com/install" | bash
-RUN mv /home/symfony/.local/bin/castor /usr/local/bin/castor
+RUN mv /root/.local/bin/castor /usr/local/bin/castor
 RUN chmod +x /usr/local/bin/castor
 RUN castor completion | sudo tee /etc/bash_completion.d/castor
 
